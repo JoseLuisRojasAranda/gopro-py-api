@@ -1168,8 +1168,12 @@ class GoPro:
                     self.streamSettings("1000000", "4")
                 elif quality == "low":
                     self.streamSettings("250000", "0")
+            """ Original
             subprocess.Popen("ffmpeg -f mpegts -i udp://" +
                              ":8554 -b 800k -r 30 -f mpegts " + addr, shell=True)
+            """
+            subprocess.Popen("ffmpeg -f mpegts -i udp://" +
+                             ":8554 -b 800k -r 2 -f mpegts " + addr, shell=True)
             self.KeepAlive()
         elif self.whichCam() == constants.Camera.Interface.Auth:
             subprocess.Popen("ffmpeg -i http://" +
